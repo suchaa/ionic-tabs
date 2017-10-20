@@ -10,7 +10,7 @@ import { Dialogs } from '@ionic-native/dialogs';
 })
 export class AdddataPage {
 
-  data = { name: "suchada", nickname: "su" };
+  data = { name: "", nickname: "" };
 
   constructor(public navCtrl: NavController,public viewCtrl: ViewController, private sqlite: SQLite, private toast: Toast, private dialogs: Dialogs) {
     this.createTable();

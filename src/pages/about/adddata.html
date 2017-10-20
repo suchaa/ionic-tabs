@@ -17,12 +17,12 @@
 
         <ion-item>
             <ion-label fixed>Name : </ion-label>
-            <ion-input type="text" value=""></ion-input>
+            <ion-input [(ngModel)]="data.name" name="name" type="text" value=""></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label fixed>Nickname : </ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input [(ngModel)]="data.nickname" name="nickname" type="text"></ion-input>
         </ion-item>
 
     </ion-list>
