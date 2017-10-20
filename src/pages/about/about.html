@@ -3,11 +3,16 @@
     <ion-title>
       About
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="!shop" (click)="addData()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <button ion-button full (click)="addData()">Add Data</button>
+  <!-- <button ion-button full (click)="addData()">Add Data</button> -->
   <ion-list>
     <ion-item *ngFor="let i of datas">{{i.name}}</ion-item>
   </ion-list>

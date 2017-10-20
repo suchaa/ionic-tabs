@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ModalController  } from 'ionic-angular';
 import { Toast } from '@ionic-native/toast';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { Dialogs } from '@ionic-native/dialogs';
+import { AdddataPage } from '../about/adddata';
 
 @Component({
   selector: 'page-about',
@@ -10,26 +11,13 @@ import { Dialogs } from '@ionic-native/dialogs';
 })
 export class AboutPage {
 
-  data = { name: "suchada", nickname: "su" };
   datas: any = [];
 
-  constructor(public navCtrl: NavController, private sqlite: SQLite, private toast: Toast, private dialogs: Dialogs) {
+  constructor(public modalCtrl: ModalController, public navCtrl: NavController, private sqlite: SQLite, private toast: Toast, private dialogs: Dialogs) {
     this.getData();
   }
 
   getData() {
-    this.sqlite.create({
-      name: 'data.db',
-      location: 'default'
-    }).then((db: SQLiteObject) => {
-      db.executeSql('create table tbUser(name VARCHAR(32), nickname VARCHAR(32))', {})
-        .then(() => this.dialogs.alert('Executed SQL'))
-        .catch(e => console.log(e));
-    })
-      .catch(e => console.log(e));
-  }
-
-  loadData() {
     this.sqlite.create({
       name: 'data.db',
       location: 'default'
@@ -47,18 +35,8 @@ export class AboutPage {
   }
 
   addData() {
-    this.sqlite.create({
-      name: 'data.db',
-      location: 'default'
-    }).then((db: SQLiteObject) => {
-      db.executeSql('INSERT INTO tbUser VALUES()', [this.data.name, this.data.nickname])
-        .then(res =>
-          this.dialogs.alert('Insert Into SQL')
-        )
-        .catch(e => console.log(e));
-    })
-      .catch(e => console.log(e));
+    let modal = this.modalCtrl.create(AdddataPage);
+    modal.present();
   }
-
 
 }
