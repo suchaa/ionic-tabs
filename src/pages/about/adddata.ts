@@ -44,7 +44,7 @@ export class AdddataPage {
         // .then(() => this.dialogs.alert('Executed SQL', 'Title', 'Ok'))
         // .catch(e => console.log(e));
 
-        return db.executeSql('INSERT INTO tbUser VALUES(NULL,?,?)', [this.data.name, this.data.nickname])
+        return db.executeSql('INSERT INTO tbUser VALUES(?,?)', [this.data.name, this.data.nickname])
           .then(res =>
             //this.dialogs.alert('Insert Into SQL', 'Title', 'Ok');
             //this.viewCtrl.dismiss()

@@ -23,7 +23,7 @@ export class AboutPage {
       location: 'default'
     })
       .then((db: SQLiteObject) => {
-        db.executeSql('SELECT * FROM tbUser ORDER BY rowid DESC', {})
+        return db.executeSql('SELECT * FROM tbUser ORDER BY rowid DESC', {})
         .then(res => {
           this.datas = [];
           for(let i=0; i<res.rows.length; i++){
