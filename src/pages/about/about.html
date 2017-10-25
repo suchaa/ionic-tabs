@@ -23,7 +23,7 @@
         <b>{{i.name}}</b> {{i.nickname}}
       </ion-item>
 
-      <ion-item-options side="right" *ngFor="let i of location">
+      <ion-item-options side="right" *ngFor="let i of datas">
         <button ion-button color="secondary" (click)="EditItem(i)">Edit</button>
         <button ion-button color="danger" (click)="DeleteItem(i)">Delete</button>
       </ion-item-options>
