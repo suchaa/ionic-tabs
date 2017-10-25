@@ -13,7 +13,13 @@ export class AboutPage {
 
   datas: any = [];
 
-  constructor(public modalCtrl: ModalController, public navCtrl: NavController, private sqlite: SQLite, private toast: Toast, private dialogs: Dialogs) {
+  constructor(
+    public modalCtrl: ModalController, 
+    public navCtrl: NavController, 
+    private sqlite: SQLite, 
+    private toast: Toast, 
+    private dialogs: Dialogs
+  ){
     this.getData();
   }
 
@@ -41,6 +47,15 @@ export class AboutPage {
     modal.onDidDismiss(data => {
       this.getData();
   });
+  }
+
+
+  EditItem(i){
+    this.dialogs.alert('Edit item', 'Edit', 'Ok');
+  }
+
+  DeleteItem(i){
+    this.dialogs.alert('Delete item', 'Delete', 'Ok');
   }
 
 }

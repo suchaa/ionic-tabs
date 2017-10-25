@@ -28,7 +28,7 @@ export class AdddataPage {
       location: 'default'
     }).then((db: SQLiteObject) => {
       return db.executeSql('create table IF NOT EXISTS tbUser(name TEXT, nickname TEXT)', {})
-        .then(() => this.dialogs.alert('Executed SQL', 'Title', 'Ok'))
+        //.then(() => this.dialogs.alert('Executed SQL', 'Title', 'Ok'))
         .catch(e => console.log(e));
     })
       .catch(e => console.log(e));
