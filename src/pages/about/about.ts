@@ -50,8 +50,19 @@ export class AboutPage {
   }
 
 
-  EditItem(i){
-    this.dialogs.alert('Edit item', 'Edit', 'Ok');
+  EditItem(name){
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      db.executeSql('DELETE FROM tbUser WHERE name=?', [name])
+      .then(res => {
+        console.log(res);
+        this.getData();
+        this.dialogs.alert('Edit item', 'Edit', 'Ok');
+      })
+      .catch(e => console.log(e));
+    }).catch(e => console.log(e));
   }
 
   DeleteItem(i){
