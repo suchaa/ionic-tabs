@@ -37,6 +37,10 @@ export class AboutPage {
   addData() {
     let modal = this.modalCtrl.create(AdddataPage);
     modal.present();
+
+    modal.onDidDismiss(data => {
+      this.getData();
+  });
   }
 
 }
