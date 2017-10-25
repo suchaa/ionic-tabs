@@ -24,8 +24,8 @@
       </ion-item>
 
       <ion-item-options side="right" *ngFor="let i of datas">
-        <button ion-button color="secondary" (click)="EditItem(i)">Edit</button>
-        <button ion-button color="danger" (click)="DeleteItem(i)">Delete</button>
+        <button ion-button color="secondary" (click)="EditItem(i.name)">Edit</button>
+        <button ion-button color="danger" (click)="DeleteItem(i.name)">Delete</button>
       </ion-item-options>
 
     </ion-item-sliding>
