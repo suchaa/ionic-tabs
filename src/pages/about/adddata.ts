@@ -10,7 +10,7 @@ import { Dialogs } from '@ionic-native/dialogs';
 })
 export class AdddataPage {
 
-  data = { name: "", nickname: "" };
+  data = { id: "", name: "", nickname: "" };
   mode: string = "ADD";
   id: string;
   name: string;
@@ -27,14 +27,15 @@ export class AdddataPage {
     this.createTable();
     this.data.name = this.navParams.get('name');
     this.data.nickname = this.navParams.get('nickname'); 
+    this.data.id = this.navParams.get('id');
   }
 
   ionViewDidLoad() {
-    if (this.id) {
-      let id = this.id;
+    if (this.data.id) {
+      let id = this.data.id;
 
       this.mode = 'EDIT';
-      this.id = id;
+      this.data.id = id;
     }
   }
 
@@ -44,7 +45,7 @@ export class AdddataPage {
         name: 'data.db',
         location: 'default'
       }).then((db: SQLiteObject) => {
-        return db.executeSql('UPDATE tbUser SET name=?,nickname=?', [this.data.name, this.data.nickname])
+        return db.executeSql('UPDATE tbUser SET name=?,nickname=? WHERE id=?', [this.data.name, this.data.nickname, this.data.id])
           .then(res =>
             //this.dialogs.alert('Insert Into SQL', 'Title', 'Ok');
             //this.viewCtrl.dismiss()
@@ -62,7 +63,7 @@ export class AdddataPage {
         name: 'data.db',
         location: 'default'
       }).then((db: SQLiteObject) => {
-        return db.executeSql('INSERT INTO tbUser VALUES(?,?)', [this.data.name, this.data.nickname])
+        return db.executeSql('INSERT INTO tbUser VALUES(null,?,?)', [this.data.name, this.data.nickname])
           .then(res =>
             //this.dialogs.alert('Insert Into SQL', 'Title', 'Ok');
             //this.viewCtrl.dismiss()
