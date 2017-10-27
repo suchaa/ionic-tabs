@@ -25,24 +25,8 @@ export class AdddataPage {
     public navParams: NavParams
   ) {
     this.createTable();
-    //this.id = this.navParams.get('id');
-    this.getCurrentData(navParams.get("name"));
-  }
-
-  getCurrentData(name) {
-    this.sqlite.create({
-      name: 'data.db',
-      location: 'default'
-    })
-      .then((db: SQLiteObject) => {
-        return db.executeSql('SELECT * FROM tbUser WHERE name=?', [name]).then(res => {
-          if(res.rows.length > 0) {
-            this.data.name = res.rows.item(0).name;
-            this.data.nickname = res.rows.item(0).nickname;
-          }
-        })
-      })
-      .catch(e => console.log(e));
+    this.name = this.navParams.get('name');
+    this.nickname = this.navParams.get('nickname'); 
   }
 
   ionViewDidLoad() {
