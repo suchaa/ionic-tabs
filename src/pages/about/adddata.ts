@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ViewController } from 'ionic-angular';
+import { NavController, ViewController, NavParams } from 'ionic-angular';
 import { Toast } from '@ionic-native/toast';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { Dialogs } from '@ionic-native/dialogs';
@@ -17,9 +17,12 @@ export class AdddataPage {
     public viewCtrl: ViewController, 
     private sqlite: SQLite, 
     private toast: Toast, 
-    private dialogs: Dialogs
+    private dialogs: Dialogs,
+    public navParams: NavParams
   ){
       this.createTable();
+      this.data.name = this.navParams.get('name');
+      this.data.nickname = this.navParams.get('nickname');
     }
 
   createTable() {
