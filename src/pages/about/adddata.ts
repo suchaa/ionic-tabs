@@ -63,7 +63,7 @@ export class AdddataPage {
         name: 'data.db',
         location: 'default'
       }).then((db: SQLiteObject) => {
-        return db.executeSql('INSERT INTO tbUser VALUES(null,?,?)', [this.data.name, this.data.nickname])
+        return db.executeSql('INSERT INTO tbUser VALUES(?,?)', [this.data.name, this.data.nickname])
           .then(res =>
             //this.dialogs.alert('Insert Into SQL', 'Title', 'Ok');
             //this.viewCtrl.dismiss()
