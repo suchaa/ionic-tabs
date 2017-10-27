@@ -50,9 +50,13 @@ export class AboutPage {
   }
 
 
-  EditItem(name){
-    this.navCtrl.push(AdddataPage);
-    //this.dialogs.alert('Edit item', 'Delete', 'Ok');
+  EditItem(name, nickname){
+    let modal = this.modalCtrl.create(AdddataPage, {name: name, nickname: nickname});
+    modal.present();
+
+    modal.onDidDismiss(data => {
+      this.getData();
+  });
   }
 
   DeleteItem(name){
