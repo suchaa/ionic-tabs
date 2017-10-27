@@ -12,7 +12,7 @@ export class AdddataPage {
 
   data = { name: "", nickname: "" };
   mode: string = "ADD";
-  id: string;
+  name: string;
 
   constructor(
     public navCtrl: NavController,
@@ -26,13 +26,16 @@ export class AdddataPage {
     this.data.name = this.navParams.get('name');
     this.data.nickname = this.navParams.get('nickname');
 
-    if (this.id) {
-      let id = this.id;
+  
+  }
+
+  ionViewDidLoad() {
+    if (this.name) {
+      let name = this.name;
 
       this.mode = 'EDIT';
-      this.id = id;
+      this.name = name;
     }
-
   }
 
   createTable() {
