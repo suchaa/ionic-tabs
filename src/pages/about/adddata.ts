@@ -39,26 +39,16 @@ export class AdddataPage {
     }
   }
 
-  createTable() {
-    this.sqlite.create({
-      name: 'data.db',
-      location: 'default'
-    }).then((db: SQLiteObject) => {
-      return db.executeSql('create table IF NOT EXISTS tbUser(name TEXT, nickname TEXT)', {})
-        //.then(() => this.dialogs.alert('Executed SQL', 'Title', 'Ok'))
-        .catch(e => console.log(e));
-    })
-      .catch(e => console.log(e));
-  }
-
   add() {
+    this.name = this.data.name;
+    this.nickname = this.data.nickname;
 
     if (this.mode === "EDIT") {
       this.sqlite.create({
         name: 'data.db',
         location: 'default'
       }).then((db: SQLiteObject) => {
-        return db.executeSql('UPDATE expense SET name=?,nickname=?', [this.data.name, this.data.nickname])
+        return db.executeSql('UPDATE expense SET name=?,nickname=?', [this.name, this.nickname])
           .then(res =>
             //this.dialogs.alert('Insert Into SQL', 'Title', 'Ok');
             //this.viewCtrl.dismiss()
@@ -92,6 +82,18 @@ export class AdddataPage {
 
   close() {
     this.viewCtrl.dismiss();
+  }
+
+  createTable() {
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      return db.executeSql('create table IF NOT EXISTS tbUser(name TEXT, nickname TEXT)', {})
+        //.then(() => this.dialogs.alert('Executed SQL', 'Title', 'Ok'))
+        .catch(e => console.log(e));
+    })
+      .catch(e => console.log(e));
   }
 
 }
