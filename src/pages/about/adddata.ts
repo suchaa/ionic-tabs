@@ -26,15 +26,13 @@ export class AdddataPage {
     this.data.name = this.navParams.get('name');
     this.data.nickname = this.navParams.get('nickname');
 
-  }
-
-  ionViewDidLoad() {
     if (this.id) {
       let id = this.id;
 
       this.mode = 'EDIT';
       this.id = id;
     }
+
   }
 
   createTable() {
