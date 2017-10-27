@@ -44,7 +44,7 @@ export class AdddataPage {
         name: 'data.db',
         location: 'default'
       }).then((db: SQLiteObject) => {
-        return db.executeSql('UPDATE expense SET name=?,nickname=?', [this.data.name, this.data.nickname])
+        return db.executeSql('UPDATE tbUser SET name=?,nickname=?', [this.data.name, this.data.nickname])
           .then(res =>
             //this.dialogs.alert('Insert Into SQL', 'Title', 'Ok');
             //this.viewCtrl.dismiss()
