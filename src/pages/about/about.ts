@@ -51,10 +51,11 @@ export class AboutPage {
 
 
   EditItem(name){
-    this.dialogs.alert('Edit item', 'Delete', 'Ok');
+    this.navCtrl.push(AdddataPage);
+    //this.dialogs.alert('Edit item', 'Delete', 'Ok');
   }
 
-  DeleteItem(i){
+  DeleteItem(name){
     this.sqlite.create({
       name: 'data.db',
       location: 'default'
