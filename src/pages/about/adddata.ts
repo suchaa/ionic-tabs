@@ -27,28 +27,25 @@ export class AdddataPage {
     this.data.name = this.navParams.get('name');
     this.data.nickname = this.navParams.get('nickname');
 
-  
   }
 
   ionViewDidLoad() {
-    if (this.data.name) {
+    if (this.name) {
       let name = this.data.name;
 
       this.mode = 'EDIT';
-      this.data.name = name;
+      this.name = name;
     }
   }
 
   add() {
-    this.name = this.data.name;
-    this.nickname = this.data.nickname;
 
     if (this.mode === "EDIT") {
       this.sqlite.create({
         name: 'data.db',
         location: 'default'
       }).then((db: SQLiteObject) => {
-        return db.executeSql('UPDATE expense SET name=?,nickname=?', [this.name, this.nickname])
+        return db.executeSql('UPDATE expense SET name=?,nickname=?', [this.data.name, this.data.nickname])
           .then(res =>
             //this.dialogs.alert('Insert Into SQL', 'Title', 'Ok');
             //this.viewCtrl.dismiss()
