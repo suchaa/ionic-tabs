@@ -51,6 +51,10 @@ export class AboutPage {
 
 
   EditItem(name){
+    this.dialogs.alert('Edit item', 'Delete', 'Ok');
+  }
+
+  DeleteItem(i){
     this.sqlite.create({
       name: 'data.db',
       location: 'default'
@@ -59,14 +63,9 @@ export class AboutPage {
       .then(res => {
         console.log(res);
         this.getData();
-        this.dialogs.alert('Edit item', 'Edit', 'Ok');
+        this.dialogs.alert('Delete item', 'Delete', 'Ok');
       })
       .catch(e => console.log(e));
     }).catch(e => console.log(e));
   }
-
-  DeleteItem(i){
-    this.dialogs.alert('Delete item', 'Delete', 'Ok');
-  }
-
 }
