@@ -50,8 +50,8 @@ export class AboutPage {
   }
 
 
-  EditItem(name){
-    let modal = this.modalCtrl.create(AdddataPage, {name:name});
+  EditItem(name, nickname){
+    let modal = this.modalCtrl.create(AdddataPage, {name:name, nickname: nickname});
     modal.present();
 
     modal.onDidDismiss(data => {
