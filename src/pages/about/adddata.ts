@@ -13,6 +13,7 @@ export class AdddataPage {
   data = { name: "", nickname: "" };
   mode: string = "ADD";
   name: string;
+  nickname: string;
 
   constructor(
     public navCtrl: NavController,
@@ -23,8 +24,8 @@ export class AdddataPage {
     public navParams: NavParams
   ) {
     this.createTable();
-    this.data.name = this.navParams.get('name');
-    this.data.nickname = this.navParams.get('nickname');
+    this.name = this.navParams.get('name');
+    this.nickname = this.navParams.get('nickname');
 
   
   }
