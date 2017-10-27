@@ -12,6 +12,7 @@ export class AdddataPage {
 
   data = { name: "", nickname: "" };
   mode: string = "ADD";
+  id: string;
   name: string;
   nickname: string;
 
@@ -24,22 +25,36 @@ export class AdddataPage {
     public navParams: NavParams
   ) {
     this.createTable();
-    this.data.name = this.navParams.get('name');
-    this.data.nickname = this.navParams.get('nickname');
+    //this.id = this.navParams.get('id');
+    this.getCurrentData(navParams.get("id"));
+  }
 
+  getCurrentData(id) {
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    })
+      .then((db: SQLiteObject) => {
+        return db.executeSql('SELECT * FROM tbUser WHERE rowid=?', [id]).then(res => {
+          if(res.rows.length > 0) {
+            this.data.name = res.rows.item(0).name;
+            this.data.nickname = res.rows.item(0).nickname;
+          }
+        })
+      })
+      .catch(e => console.log(e));
   }
 
   ionViewDidLoad() {
-    if (this.name) {
-      let name = this.data.name;
+    if (this.id) {
+      let id = this.id;
 
       this.mode = 'EDIT';
-      this.name = name;
+      this.id = id;
     }
   }
 
   add() {
-
     if (this.mode === "EDIT") {
       this.sqlite.create({
         name: 'data.db',
@@ -57,6 +72,7 @@ export class AdddataPage {
           .catch(e => console.log(e));
       })
         .catch(e => console.log(e));
+
     } else {
       this.sqlite.create({
         name: 'data.db',
@@ -86,7 +102,7 @@ export class AdddataPage {
       name: 'data.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      return db.executeSql('create table IF NOT EXISTS tbUser(name TEXT, nickname TEXT)', {})
+      return db.executeSql('create table IF NOT EXISTS tbUser(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, nickname TEXT)', {})
         //.then(() => this.dialogs.alert('Executed SQL', 'Title', 'Ok'))
         .catch(e => console.log(e));
     })
