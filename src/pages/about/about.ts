@@ -50,8 +50,8 @@ export class AboutPage {
   }
 
 
-  EditItem(id){
-    let modal = this.modalCtrl.create(AdddataPage, {id: id});
+  EditItem(name){
+    let modal = this.modalCtrl.create(AdddataPage, {name:name});
     modal.present();
 
     modal.onDidDismiss(data => {
@@ -59,12 +59,12 @@ export class AboutPage {
   });
   }
 
-  DeleteItem(id){
+  DeleteItem(name){
     this.sqlite.create({
       name: 'data.db',
       location: 'default'
     }).then((db: SQLiteObject) => {
-      db.executeSql('DELETE FROM tbUser WHERE id=?', [id])
+      db.executeSql('DELETE FROM tbUser WHERE name=?', [name])
       .then(res => {
         console.log(res);
         this.getData();

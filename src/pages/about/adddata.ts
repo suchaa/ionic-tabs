@@ -26,16 +26,16 @@ export class AdddataPage {
   ) {
     this.createTable();
     //this.id = this.navParams.get('id');
-    this.getCurrentData(navParams.get("id"));
+    this.getCurrentData(navParams.get("name"));
   }
 
-  getCurrentData(id) {
+  getCurrentData(name) {
     this.sqlite.create({
       name: 'data.db',
       location: 'default'
     })
       .then((db: SQLiteObject) => {
-        return db.executeSql('SELECT * FROM tbUser WHERE rowid=?', [id]).then(res => {
+        return db.executeSql('SELECT * FROM tbUser WHERE name=?', [name]).then(res => {
           if(res.rows.length > 0) {
             this.data.name = res.rows.item(0).name;
             this.data.nickname = res.rows.item(0).nickname;
