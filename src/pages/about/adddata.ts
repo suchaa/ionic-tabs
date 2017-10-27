@@ -25,8 +25,8 @@ export class AdddataPage {
     public navParams: NavParams
   ) {
     this.createTable();
-    this.name = this.navParams.get('name');
-    this.nickname = this.navParams.get('nickname'); 
+    this.data.name = this.navParams.get('name');
+    this.data.nickname = this.navParams.get('nickname'); 
   }
 
   ionViewDidLoad() {
