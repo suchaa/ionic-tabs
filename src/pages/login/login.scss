@@ -1,0 +1,28 @@
+page-login {
+    .background{
+        background: linear-gradient(10deg ,rgb(34, 139, 34), rgb(11, 211, 211));
+    }
+   
+    .scroll-content{
+        background: rgba(34, 139, 34, 0.3);
+		display: flex;
+		flex-direction: column;
+        justify-content: center;
+    }
+    
+    h2{
+        text-align: center;
+        color: #571616;
+    }
+
+    ion-card.card{
+        border-radius: 10px;
+        background: rgba(250, 250, 250, 0.6);
+    }
+
+    ion-input{
+        //border-radius: 5px;
+        background: rgba(252, 251, 251, 0.3);
+       // border: #32db64 solid 0.5px;
+    }
+}
